@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/universal:linux
+FROM mcr.microsoft.com/devcontainers/universal:2-linux
 
 # Update basic packages
 RUN apt-get update \
