@@ -5,8 +5,9 @@ on:
 
 jobs:
   changes:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: read
     outputs:
       devcontainer: ${{ steps.filter.outputs.devcontainer }}
@@ -14,7 +15,6 @@ jobs:
       - uses: dorny/paths-filter@v3
         id: filter
         with:
-          ref: ${{ github.ref }}
           filters: |
             devcontainer:
               - '.devcontainer/**'
