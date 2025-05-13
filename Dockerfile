@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/universal:2-linux
+FROM ghcr.io/lx-0/devcontainer-templates/universal-arm64:0.1.0
 
 # Update basic packages
 RUN apt-get update \
