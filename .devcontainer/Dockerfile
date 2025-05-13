@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM ubuntu:jammy
+FROM ubuntu:focal
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Restore man command
