@@ -25,7 +25,10 @@ RUN echo "Welcome to a Diploi remote dev environment! Check out docs.diploi.com 
 #   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 #   echo "LANG=en_US.UTF-8" > /etc/locale.conf && \
 #   locale-gen en_US.UTF-8
-  
+
+RUN cat /etc/gitconfig
+RUN cat /etc/diploi-git/gitconfig
+
 # Gitconfig secrets and credential helper
 RUN ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 COPY diploi-credential-helper /usr/local/bin
