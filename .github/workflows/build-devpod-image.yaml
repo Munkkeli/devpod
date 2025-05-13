@@ -12,12 +12,16 @@ jobs:
     outputs:
       devcontainer: ${{ steps.filter.outputs.devcontainer }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
             devcontainer:
               - '.devcontainer/**'
+
   devcontainer:
     needs: changes
     if: ${{ needs.changes.outputs.devcontainer == 'true' }}
@@ -42,6 +46,7 @@ jobs:
           imageName: ghcr.io/munkkeli/devpod/devcontainer
           cacheFrom: ghcr.io/munkkeli/devpod/devcontainer
           push: always
+
   devpod:
     needs: devcontainer
     runs-on: ubuntu-24.04-arm
