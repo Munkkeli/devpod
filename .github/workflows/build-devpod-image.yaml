@@ -49,6 +49,7 @@ jobs:
 
   devpod:
     needs: devcontainer
+    if: ${{ always() && !failure() }}
     runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
