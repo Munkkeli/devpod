@@ -20,6 +20,7 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
+          configFile: ./.devcontainer/devcontainer.json
           imageName: ghcr.io/devcontainers/templates/universal:1.1
           cacheFrom: ghcr.io/devcontainers/templates/universal:1.1
           push: always
