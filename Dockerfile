@@ -1,4 +1,4 @@
-FROM ghcr.io/lx-0/devcontainer-templates/universal-arm64:0.1.0
+FROM ghcr.io/devcontainers/templates/universal:1.1
 
 # Update basic packages
 RUN apt-get update \
