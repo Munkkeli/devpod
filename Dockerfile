@@ -1,4 +1,4 @@
-FROM ghcr.io/devcontainers/templates/universal:1.1
+FROM ghcr.io/munkkeli/devpod/devcontainer:latest
 
 # Update basic packages
 RUN apt-get update \
