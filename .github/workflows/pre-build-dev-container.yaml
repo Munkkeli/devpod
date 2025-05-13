@@ -23,6 +23,6 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/devcontainers/templates/universal
+          imageName: ghcr.io/Munkkeli/devpod/universal
           imageTag: 1.1
           push: always
