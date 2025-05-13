@@ -26,11 +26,15 @@ RUN echo "Welcome to a Diploi remote dev environment! Check out docs.diploi.com 
 #   echo "LANG=en_US.UTF-8" > /etc/locale.conf && \
 #   locale-gen en_US.UTF-8
 
-RUN cat /etc/gitconfig
-RUN cat /etc/diploi-git/gitconfig
+# Existing gitconfig
+# [filter "lfs"]
+#   clean = git-lfs clean -- %f
+#   smudge = git-lfs smudge -- %f
+#   process = git-lfs filter-process
+#   required = true
 
 # Gitconfig secrets and credential helper
-RUN ln -s /etc/diploi-git/gitconfig /etc/gitconfig
+RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 COPY diploi-credential-helper /usr/local/bin
 
 # Install code server
