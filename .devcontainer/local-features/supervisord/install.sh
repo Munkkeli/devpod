@@ -3,7 +3,7 @@
 set -eax
 
 apt-get update \
-  && apt-get -y supervisor
+  && apt-get install -y supervisor
 
 cat > /etc/supervisord.conf <<EOT
 [supervisord]
