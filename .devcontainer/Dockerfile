@@ -57,4 +57,4 @@ RUN apt-get clean -y && rm -rf /tmp/scripts
 # RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 COPY diploi-credential-helper /usr/local/bin
 
-CMD [ "sleep", "infinity" ]
+CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
