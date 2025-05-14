@@ -1,8 +1,3 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
-
 FROM ubuntu:noble
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -36,8 +31,7 @@ RUN apt-get update \
         libc6 \
         libgcc1 \
         libgssapi-krb5-2 \
-        libncurses5 \
-        liblttng-ust0 \
+        liblttng-ust1 \
         libssl-dev \
         libstdc++6 \
         zlib1g \
