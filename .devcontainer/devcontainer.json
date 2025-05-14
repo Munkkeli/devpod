@@ -22,6 +22,7 @@
       "version": "24",
       "additionalVersions": "18"
     },
+    "./local-features/bun": "latest",
     // "ghcr.io/devcontainers/features/python:1": {
     //   "version": "3.13",
     //   "additionalVersions": "3.12",
@@ -47,6 +48,7 @@
       "version": "latest"
       // "ppa": "false"
     },
+    "./local-features/credential-helper": "latest",
     // "ghcr.io/devcontainers/features/git-lfs:1": {
     //   "version": "latest"
     // },
@@ -72,8 +74,10 @@
   "overrideFeatureInstallOrder": [
     "ghcr.io/devcontainers/features/common-utils",
     "ghcr.io/devcontainers/features/git",
+    "./local-features/credential-helper",
     "ghcr.io/devcontainers/features/dotnet",
     "ghcr.io/devcontainers/features/node",
+    "./local-features/bun",
     "ghcr.io/devcontainer-community/devcontainer-features/bun.sh",
     "ghcr.io/devcontainers/features/python",
     "ghcr.io/devcontainers/features/php",
@@ -86,7 +90,6 @@
   "remoteUser": "codespace",
   "containerUser": "codespace",
   // Setup the Diploi Git credential helper
-  "postCreateCommand": "rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig",
   "postStartCommand": "nohup /usr/local/bin/code-server-entrypoint",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
