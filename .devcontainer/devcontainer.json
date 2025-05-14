@@ -1,9 +1,10 @@
 // original image: mcr.microsoft.com/devcontainers/universal:2
 {
-  "build": {
-    "dockerfile": "./Dockerfile",
-    "context": "."
-  },
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  // "build": {
+  //   "dockerfile": "./Dockerfile",
+  //   "context": "."
+  // },
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "username": "codespace",
