@@ -54,7 +54,7 @@ RUN apt-get update \
 RUN apt-get clean -y && rm -rf /tmp/scripts
 
 # Diploi gitconfig secrets and credential helper
-RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
+# RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 COPY diploi-credential-helper /usr/local/bin
 
 CMD [ "sleep", "infinity" ]

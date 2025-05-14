@@ -85,6 +85,8 @@
   ],
   "remoteUser": "codespace",
   "containerUser": "codespace",
+  // Setup the Diploi Git credential helper
+  "postCreateCommand": "rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
     80,
