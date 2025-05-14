@@ -1,5 +1,11 @@
 FROM ubuntu:noble
 
+RUN if id "ubuntu" &>/dev/null; then \
+        echo "Deleting user 'ubuntu'  for $VARIANT" && userdel -f -r ubuntu || echo "Failed to delete ubuntu user for $VARIANT"; \  
+    else \
+        echo "User 'ubuntu' does not exist for $VARIANT"; \ 
+    fi
+
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Restore man command
     && yes | unminimize 2>&1 
@@ -25,26 +31,8 @@ RUN apt-get update \
         moreutils \
         rsync \
         zip \
-        libgdiplus \
         jq \
-        #.NET Core related pre-requisites
-        libc6 \
-        libgcc1 \
-        libgssapi-krb5-2 \
-        liblttng-ust1 \
-        libssl-dev \
-        libstdc++6 \
-        zlib1g \
-        libuuid1 \
-        libunwind8 \
-        sqlite3 \
-        libsqlite3-dev \
-        software-properties-common \
-        tk-dev \
-        uuid-dev \
         curl \
-        gettext \
-        inotify-tools \
     && rm -rf /var/lib/apt/lists/* \
     # This is the folder containing 'links' to benv and build script generator
     && apt-get update \
