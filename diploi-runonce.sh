@@ -10,20 +10,20 @@ progress() {
 progress "Runonce started";
 
 # Set accepted ssh key(s)
-mkdir -p /root/.ssh;
-chmod 0700 /root/.ssh;
-cat /etc/ssh/internal_ssh_host_rsa.pub > /root/.ssh/authorized_keys;
+# mkdir -p /root/.ssh;
+# chmod 0700 /root/.ssh;
+# cat /etc/ssh/internal_ssh_host_rsa.pub > /root/.ssh/authorized_keys;
 
 cd /app;
 
 # Seems that this is first run in devel instance
 
 # Configure VSCode
-if [ ! -e /home/node/.local/share/code-server/User/settings.json ]; then
-  mkdir -p /home/node/.local/share/code-server/User
-  cp /usr/local/etc/diploi-vscode-settings.json /home/node/.local/share/code-server/User/settings.json
-  chown -R node:node /home/node/.local/share/code-server
-fi
+# if [ ! -e /home/node/.local/share/code-server/User/settings.json ]; then
+#   mkdir -p /home/node/.local/share/code-server/User
+#   cp /usr/local/etc/diploi-vscode-settings.json /home/node/.local/share/code-server/User/settings.json
+#   chown -R node:node /home/node/.local/share/code-server
+# fi
 # Update internal ca certificate
 update-ca-certificates
 

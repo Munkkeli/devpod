@@ -1,8 +1,8 @@
 FROM ghcr.io/munkkeli/devpod/devcontainer:latest
 
 # Update basic packages
-RUN apt-get update \
-  && apt-get install -y supervisor postgresql-client
+# RUN apt-get update \
+#   && apt-get install -y supervisor postgresql-client
 
 # SSH keys and some login related stuff (some work only for prod)
 # RUN mkdir -p /run/sshd /root/.ssh \
@@ -38,10 +38,10 @@ RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 COPY diploi-credential-helper /usr/local/bin
 
 # Install code server
-RUN curl -fsSL https://code-server.dev/install.sh | sh
-COPY diploi-vscode-settings.json /usr/local/etc/diploi-vscode-settings.json
+# RUN curl -fsSL https://code-server.dev/install.sh | sh
+# COPY diploi-vscode-settings.json /usr/local/etc/diploi-vscode-settings.json
 
 # Init and run supervisor
-COPY diploi-runonce.sh /usr/local/bin/diploi-runonce.sh
-COPY supervisord.conf /etc/supervisord.conf
-CMD /usr/bin/supervisord -c /etc/supervisord.conf
+# COPY diploi-runonce.sh /usr/local/bin/diploi-runonce.sh
+# COPY supervisord.conf /etc/supervisord.conf
+# CMD /usr/bin/supervisord -c /etc/supervisord.conf

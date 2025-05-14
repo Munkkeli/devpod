@@ -56,6 +56,17 @@
     "ghcr.io/devcontainer-community/devcontainer-features/bun.sh:1": {
       "version": "latest"
     },
+    "ghcr.io/coder/devcontainer-features/code-server:1": {
+      "appName": "Diploi",
+      "disableWorkspaceTrust": "true",
+      "disableGettingStartedOverride": "true",
+      "disableUpdateCheck": "true",
+      "disableTelemetry": "true",
+      "auth": "none",
+      "host": "0.0.0.0",
+      "port": "3001",
+      "workspace": "/app"
+    },
     "ghcr.io/devcontainers/features/oryx:1": "latest",
     "./local-features/setup-user": "latest",
     "./local-features/patch-python": {}
@@ -74,7 +85,9 @@
     "ghcr.io/devcontainers/features/java",
     "ghcr.io/devcontainers/features/git-lfs",
     "ghcr.io/devcontainers/features/go",
+    "ghcr.io/devcontainer-community/devcontainer-features/bun.sh",
     "ghcr.io/devcontainers/features/oryx",
+    "ghcr.io/coder/devcontainer-features/code-server",
     "./local-features/setup-user"
   ],
   "remoteUser": "codespace",
@@ -87,6 +100,8 @@
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
+        "workbench.colorTheme": "Default Dark Modern",
+        "workbench.startupEditor": "none",
         "go.toolsManagement.checkForUpdates": "local",
         "go.useLanguageServer": true,
         "go.gopath": "/go",
