@@ -6,11 +6,11 @@
   //   "context": "."
   // },
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "codespace",
-      "userUid": "1000",
-      "userGid": "1000"
-    },
+    // "ghcr.io/devcontainers/features/common-utils:2": {
+    //   "username": "codespace",
+    //   "userUid": "1000",
+    //   "userGid": "1000"
+    // },
     "ghcr.io/devcontainers/features/dotnet:2": {
       "version": "9.0",
       "dotnetRuntimeVersions": "8.0",
@@ -91,7 +91,11 @@
   "remoteUser": "codespace",
   "containerUser": "codespace",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [],
+  "forwardPorts": [
+    80,
+    3000,
+    3001
+  ],
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
