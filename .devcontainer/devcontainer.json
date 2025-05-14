@@ -20,7 +20,6 @@
       "version": "24",
       "additionalVersions": "18"
     },
-    "./local-features/nvs": "latest",
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.13",
       "additionalVersions": "3.12",
@@ -28,7 +27,6 @@
       "configureJupyterlabAllowOrigin": "*",
       "useOryxIfAvailable": "false"
     },
-    "./local-features/machine-learning-packages": "latest",
     "ghcr.io/devcontainers/features/php:1": {
       "version": "8.4.7",
       "additionalVersions": "8.3.21",
@@ -67,27 +65,8 @@
       "port": "3001",
       "workspace": "/app"
     },
-    "ghcr.io/devcontainers/features/oryx:1": "latest",
-    "./local-features/setup-user": "latest",
-    "./local-features/patch-python": {}
+    "ghcr.io/devcontainers/features/oryx:1": "latest"
   },
-  "overrideFeatureInstallOrder": [
-    "ghcr.io/devcontainers/features/common-utils",
-    "ghcr.io/devcontainers/features/git",
-    "ghcr.io/devcontainers/features/dotnet",
-    "ghcr.io/devcontainers/features/node",
-    "./local-features/nvs",
-    "ghcr.io/devcontainers/features/python",
-    "./local-features/patch-python",
-    "./local-features/machine-learning-packages",
-    "ghcr.io/devcontainers/features/php",
-    "ghcr.io/devcontainers/features/ruby",
-    "ghcr.io/devcontainers/features/java",
-    "ghcr.io/devcontainers/features/git-lfs",
-    "ghcr.io/devcontainers/features/go",
-    "ghcr.io/devcontainers/features/oryx",
-    "./local-features/setup-user"
-  ],
   "remoteUser": "codespace",
   "containerUser": "codespace",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
