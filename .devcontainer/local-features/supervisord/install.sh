@@ -2,7 +2,7 @@
 
 set -eax
 
-RUN apt-get update \
+apt-get update \
   && apt-get -y supervisor
 
 cat > /etc/supervisord.conf <<EOT
