@@ -1,16 +1,23 @@
 // original image: mcr.microsoft.com/devcontainers/universal:2
 {
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  // "build": {
-  //   "dockerfile": "./Dockerfile",
-  //   "context": "."
-  // },
+  // "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "."
+  },
   "features": {
     // "ghcr.io/devcontainers/features/common-utils:2": {
     //   "username": "codespace",
     //   "userUid": "1000",
     //   "userGid": "1000"
     // },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "true",
+      "username": "codespace",
+      "userUid": "1000",
+      "userGid": "1000",
+      "upgradePackages": "true"
+    },
     "ghcr.io/devcontainers/features/dotnet:2": {
       "version": "9.0",
       "dotnetRuntimeVersions": "8.0",
