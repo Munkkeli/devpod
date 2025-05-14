@@ -5,7 +5,7 @@ set -eax
 RUN apt-get update \
   && apt-get -y supervisor
 
-tee -a /etc/supervisord.conf >&- <<EOT
+cat > /etc/supervisord.conf <<EOT
 [supervisord]
 nodaemon=true
 user=root
