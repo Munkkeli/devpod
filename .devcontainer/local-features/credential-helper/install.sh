@@ -2,6 +2,4 @@
 
 set -eax
 
-sudo -iu $_REMOTE_USER <<EOF
-  ln -s /etc/diploi-git/gitconfig /etc/gitconfig
-EOF
+ln -s /etc/diploi-git/gitconfig /etc/gitconfig
