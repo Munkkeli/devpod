@@ -5,8 +5,6 @@
 
 FROM ubuntu:noble
 
-COPY first-run-notice.txt /tmp/scripts/
-
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Restore man command
     && yes | unminimize 2>&1 
@@ -34,9 +32,6 @@ RUN apt-get update \
         zip \
         libgdiplus \
         jq \
-        # By default pip is not available in the buildpacks image
-        python-pip-whl \
-        python3-pip \
         #.NET Core related pre-requisites
         libc6 \
         libgcc1 \
@@ -72,10 +67,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libnss3 libnspr4 libatk-bridge2.0-0 libatk1.0-0 libx11-6 libpangocairo-1.0-0 \
                                                     libx11-xcb1 libcups2 libxcomposite1 libxdamage1 libxfixes3 libpango-1.0-0 libgbm1 libgtk-3-0 \
     # Clean up
-    && apt-get autoremove -y && apt-get clean -y \
-    # Move first run notice to right spot
-    && mkdir -p "/usr/local/etc/vscode-dev-containers/" \
-    && mv -f /tmp/scripts/first-run-notice.txt /usr/local/etc/vscode-dev-containers/
+    && apt-get autoremove -y && apt-get clean -y
 
 # Default to bash shell (other shells available at /usr/bin/fish and /usr/bin/zsh)
 ENV SHELL=/bin/bash \
@@ -90,15 +82,4 @@ RUN apt-get install -yq fish \
 # Remove scripts now that we're done with them
 RUN apt-get clean -y && rm -rf /tmp/scripts
 
-# Mount for docker-in-docker 
-VOLUME [ "/var/lib/docker" ]
-
 CMD [ "sleep", "infinity" ]
-
-# [Optional] Install debugger for development of Codespaces - Not in resulting image by default
-ARG DeveloperBuild
-RUN if [ -z $DeveloperBuild ]; then \
-        echo "not including debugger" ; \
-    else \
-        curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg ; \
-    fi
