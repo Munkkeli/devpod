@@ -23,18 +23,18 @@
       "additionalVersions": "18"
     },
     "./local-features/bun": "latest",
-    // "ghcr.io/devcontainers/features/python:1": {
-    //   "version": "3.13",
-    //   "additionalVersions": "3.12",
-    //   "installJupyterlab": "true",
-    //   "configureJupyterlabAllowOrigin": "*",
-    //   "useOryxIfAvailable": "false"
-    // },
-    // "ghcr.io/devcontainers/features/php:1": {
-    //   "version": "8.4.7",
-    //   "additionalVersions": "8.3.21",
-    //   "installComposer": "true"
-    // },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.13",
+      "additionalVersions": "3.12",
+      "installJupyterlab": "true",
+      "configureJupyterlabAllowOrigin": "*",
+      "useOryxIfAvailable": "false"
+    },
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.4.7",
+      "additionalVersions": "8.3.21",
+      "installComposer": "true"
+    },
     // "ghcr.io/devcontainers/features/ruby:1": {
     //   "version": "latest"
     // },
@@ -53,9 +53,6 @@
     //   "version": "latest"
     // },
     // "ghcr.io/devcontainers/features/go:1": {
-    //   "version": "latest"
-    // },
-    // "ghcr.io/devcontainer-community/devcontainer-features/bun.sh:1": {
     //   "version": "latest"
     // },
     "ghcr.io/coder/devcontainer-features/code-server:1": {
