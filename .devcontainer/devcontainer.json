@@ -68,7 +68,8 @@
       "host": "0.0.0.0",
       "port": "3001",
       "workspace": "/app"
-    }
+    },
+    "./local-features/supervisord": "latest"
     // "ghcr.io/devcontainers/features/oryx:1": "latest"
   },
   "overrideFeatureInstallOrder": [
@@ -85,12 +86,11 @@
     "ghcr.io/devcontainers/features/java",
     "ghcr.io/devcontainers/features/git-lfs",
     "ghcr.io/devcontainers/features/go",
-    "ghcr.io/coder/devcontainer-features/code-server"
+    "ghcr.io/coder/devcontainer-features/code-server",
+    "./local-features/supervisord"
   ],
   "remoteUser": "codespace",
   "containerUser": "codespace",
-  // Setup the Diploi Git credential helper
-  "postStartCommand": "nohup /usr/local/bin/code-server-entrypoint",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
     80,
