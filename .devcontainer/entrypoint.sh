@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Check if this is the default command
-if [[ "$0" == "/etc/entrypoint.sh" && "$1" == "supervisord" ]]; then
-    # Run CMD as root
-    exec "$@"
-else
-    # If exec'd into the container or a custom command is run, drop to non-root
-    exec su - codespace -c "$*"
+# Detect if we are in an interactive shell
+if [[ -t 1 && "$#" -eq 1 && "$1" == "bash" ]]; then
+    echo "Switching to non-root user for interactive shell"
+    exec su - codespace
 fi
+
+# Run CMD as root
+exec "$@"
