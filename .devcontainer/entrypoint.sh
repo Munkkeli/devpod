@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if this is the default command
-if [[ "$0" == "/entrypoint.sh" && "$1" == "supervisord" ]]; then
+if [[ "$0" == "/etc/entrypoint.sh" && "$1" == "supervisord" ]]; then
     # Run CMD as root
     exec "$@"
 else
