@@ -50,8 +50,8 @@ COPY supervisord.conf /etc/supervisord.conf
 RUN rm -rf /tmp/scripts
 
 # Clean up
-RUN apt-get autoremove -y
-    && apt-get clean -y
+RUN apt-get autoremove -y \
+    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
