@@ -39,20 +39,21 @@ echo `date -u +"%Y-%m-%dT%H:%M:%SZ"` password=$password >> $LOG
 echo "username=$username";
 echo "password=$password";
 EOT
+chmod +x /usr/local/bin/diploi-credential-helper
 
 # Symlink the Diploi provided gitconfig to be used by the user
 ln -s /etc/diploi-git/gitconfig /etc/gitconfig
 
 # Configure VS Code
-mkdir -p $_CONTAINER_USER_HOME/.local/share/code-server/User
-cat > $_CONTAINER_USER_HOME/.local/share/code-server/User/settings.json <<EOT
+mkdir -p /home/$_CONTAINER_USER/.local/share/code-server/User
+cat > /home/$_CONTAINER_USER/.local/share/code-server/User/settings.json <<EOT
 {
   "workbench.colorTheme": "Default Dark Modern",
   "workbench.startupEditor": "none",
   "go.toolsManagement.checkForUpdates": "local",
   "go.useLanguageServer": true,
   "go.gopath": "/go",
-  "python.defaultInterpreterPath": "$_CONTAINER_USER_HOME/.python/current/bin/python3",
+  "python.defaultInterpreterPath": "/home/$_CONTAINER_USER/.python/current/bin/python3",
   "jupyter.kernels.filter": [
     {
       "path": "/opt/conda/bin/python",
@@ -78,7 +79,7 @@ cat > $_CONTAINER_USER_HOME/.local/share/code-server/User/settings.json <<EOT
   "lldb.executable": "/usr/bin/lldb"
 }
 EOT
-chown -R $_CONTAINER_USER:$_CONTAINER_USER $_CONTAINER_USER_HOME/.local/share/code-server
+chown -R $_CONTAINER_USER:$_CONTAINER_USER /home/$_CONTAINER_USER/.local/share/code-server
 
 # Create a nice welcome message
 cat > /etc/motd <<'EOT'

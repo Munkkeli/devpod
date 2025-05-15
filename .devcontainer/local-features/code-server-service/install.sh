@@ -7,7 +7,7 @@ cat <<EOT >> /etc/supervisord.conf
 [program:code-server]
 directory=/app
 user=$_CONTAINER_USER
-environment=HOME="$_CONTAINER_USER_HOME"
+environment=HOME="/home/$_CONTAINER_USER"
 command=/usr/local/bin/code-server-entrypoint
 autostart=true
 autorestart=true
