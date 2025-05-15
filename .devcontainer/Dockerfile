@@ -54,6 +54,4 @@ RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-USER 1000
-
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
