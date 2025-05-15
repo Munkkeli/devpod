@@ -1,8 +1,0 @@
-{
-	"id": "credential-helper",
-	"name": "Git Credential Helper",
-	"version": "1.0.0",
-	"installsAfter": [
-		"ghcr.io/devcontainers/features/git"
-	]
-}

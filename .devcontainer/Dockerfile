@@ -32,29 +32,26 @@ RUN apt-get update \
         rsync \
         zip \
         jq \
-        curl \
-    && rm -rf /var/lib/apt/lists/* \
-    # This is the folder containing 'links' to benv and build script generator
-    && apt-get update \
-    && apt-get upgrade -y \
-    && rm -rf /var/lib/apt/lists/*
+        curl
 
 # Verify expected build and debug tools are present
-RUN apt-get update \
-    && apt-get -y install build-essential cmake cppcheck valgrind clang lldb llvm gdb python3-dev \
+RUN apt-get -y install build-essential cmake cppcheck valgrind clang lldb llvm gdb python3-dev \
     # Install tools and shells not in common script
     && apt-get install -yq vim vim-doc xtail software-properties-common libsecret-1-dev \
     # Install additional tools (useful for 'puppeteer' project)
     && apt-get install -y --no-install-recommends libnss3 libnspr4 libatk-bridge2.0-0 libatk1.0-0 libx11-6 libpangocairo-1.0-0 \
-                                                    libx11-xcb1 libcups2 libxcomposite1 libxdamage1 libxfixes3 libpango-1.0-0 libgbm1 libgtk-3-0 \
-    # Clean up
-    && apt-get autoremove -y && apt-get clean -y
+                                                    libx11-xcb1 libcups2 libxcomposite1 libxdamage1 libxfixes3 libpango-1.0-0 libgbm1 libgtk-3-0
+
+# Install and configure supervisord
+RUN apt-get install -y supervisor
+COPY supervisord.conf /etc/supervisord.conf
 
 # Remove scripts now that we're done with them
-RUN apt-get clean -y && rm -rf /tmp/scripts
+RUN rm -rf /tmp/scripts
 
-# Diploi gitconfig secrets and credential helper
-# RUN rm /etc/gitconfig && ln -s /etc/diploi-git/gitconfig /etc/gitconfig
-COPY diploi-credential-helper /usr/local/bin
+# Clean up
+RUN apt-get autoremove -y
+    && apt-get clean -y
+    && rm -rf /var/lib/apt/lists/*
 
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]

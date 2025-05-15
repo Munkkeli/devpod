@@ -1,30 +1,10 @@
-name: Build Devpod Image
+name: Build Dev Container Image
 
 on:
   push:
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
-    outputs:
-      devcontainer: ${{ steps.filter.outputs.devcontainer }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            devcontainer:
-              - '.devcontainer/**'
-
   devcontainer:
-    needs: changes
-    if: ${{ needs.changes.outputs.devcontainer == 'true' }}
     runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
@@ -46,28 +26,3 @@ jobs:
           imageName: ghcr.io/munkkeli/devpod/devcontainer
           cacheFrom: ghcr.io/munkkeli/devpod/devcontainer
           push: always
-
-  devpod:
-    needs: devcontainer
-    if: ${{ always() && !failure() }}
-    runs-on: ubuntu-24.04-arm
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build Devpod image
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          platforms: linux/arm64
-          tags: ghcr.io/munkkeli/devpod:latest

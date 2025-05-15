@@ -1,6 +1,4 @@
-// original image: mcr.microsoft.com/devcontainers/universal:2
 {
-  // "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "build": {
     "dockerfile": "./Dockerfile",
     "context": "."
@@ -48,7 +46,6 @@
       "version": "latest"
       // "ppa": "false"
     },
-    "./local-features/credential-helper": "latest",
     // "ghcr.io/devcontainers/features/git-lfs:1": {
     //   "version": "latest"
     // },
@@ -66,13 +63,13 @@
       "port": "3001",
       "workspace": "/app"
     },
-    "./local-features/supervisord": "latest"
+    "./local-features/code-server-service": "latest",
     // "ghcr.io/devcontainers/features/oryx:1": "latest"
+    "./local-features/diploi": "latest"
   },
   "overrideFeatureInstallOrder": [
     "ghcr.io/devcontainers/features/common-utils",
     "ghcr.io/devcontainers/features/git",
-    "./local-features/credential-helper",
     "ghcr.io/devcontainers/features/dotnet",
     "ghcr.io/devcontainers/features/node",
     "./local-features/bun",
@@ -84,7 +81,8 @@
     "ghcr.io/devcontainers/features/git-lfs",
     "ghcr.io/devcontainers/features/go",
     "ghcr.io/coder/devcontainer-features/code-server",
-    "./local-features/supervisord"
+    "./local-features/code-server-service",
+    "./local-features/diploi"
   ],
   "remoteUser": "codespace",
   "containerUser": "codespace",
@@ -95,43 +93,5 @@
     3001
   ],
   // Configure tool-specific properties.
-  "customizations": {
-    // Configure properties specific to VS Code.
-    "vscode": {
-      // Set *default* container specific settings.json values on container create.
-      "settings": {
-        "workbench.colorTheme": "Default Dark Modern",
-        "workbench.startupEditor": "none",
-        "go.toolsManagement.checkForUpdates": "local",
-        "go.useLanguageServer": true,
-        "go.gopath": "/go",
-        "python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
-        "jupyter.kernels.filter": [
-          {
-            "path": "/opt/conda/bin/python",
-            "type": "pythonEnvironment"
-          },
-          {
-            "path": "/usr/local/python/current/bin/python3",
-            "type": "pythonEnvironment"
-          },
-          {
-            "path": "/usr/local/python/current/bin/python",
-            "type": "pythonEnvironment"
-          },
-          {
-            "path": "/usr/bin/python3",
-            "type": "pythonEnvironment"
-          },
-          {
-            "path": "/bin/python3",
-            "type": "pythonEnvironment"
-          }
-        ],
-        "lldb.executable": "/usr/bin/lldb"
-      },
-      // Add the IDs of extensions you want installed when the container is created.
-      "extensions": []
-    }
-  }
+  "customizations": {}
 }
