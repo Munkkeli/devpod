@@ -54,9 +54,4 @@ RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# Script to handle dropping root for exec sessions
-COPY entrypoint.sh /etc/entrypoint.sh
-RUN chmod +x /etc/entrypoint.sh
-ENTRYPOINT ["/etc/entrypoint.sh"]
-
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]

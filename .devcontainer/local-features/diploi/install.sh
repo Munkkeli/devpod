@@ -83,10 +83,15 @@ chown -R $_CONTAINER_USER:$_CONTAINER_USER /home/$_CONTAINER_USER/.local/share/c
 
 # Create a nice welcome message
 cat > /etc/motd <<'EOT'
+  ___  _      _     _ 
+ |   \(_)_ __| |___(_)
+ | |) | | '_ \ / _ \ |
+ |___/|_| .__/_\___/_|
+        |_|           
 
-👋 Welcome to your Diploi development environment!
+ 👋 Welcome to your Diploi development environment!
    - Your app processes are *not* running here (like node or bun).
-     To manage them, use the dashboard to connect to the components directly.
+     To manage them, use the Diploi dashboard.
    - You can run commands like npm install here.
    - You can edit your code here. Changes are instantly reflected to all components.
 
