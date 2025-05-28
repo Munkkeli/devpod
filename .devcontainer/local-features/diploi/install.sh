@@ -101,3 +101,8 @@ cat > /etc/motd <<'EOT'
    Happy coding! ✨
 
 EOT
+
+# Print the welcome message on login
+cat <<EOF >> /home/$_CONTAINER_USER/.zshrc
+cat /etc/motd
+EOF
